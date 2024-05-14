@@ -1,3 +1,5 @@
+# Binar: Challenge 07 Testing and Deployment (On Progress)
+Fullstack Web Development Challenge 7 Binar Academy - FSW2402KM6004 Andhika Rizky Aulia
 # BCR API
 
 Di dalam repository ini terdapat implementasi API dari Binar Car Rental.
