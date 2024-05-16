@@ -8,7 +8,7 @@ const {
 
 module.exports = {
   test: {
-    database: process.env.DATABASE_URL,
+    database: "postgresql://postgres:bieiFOuPaXQKdWEYtLyOPpgVzOhvFneT@monorail.proxy.rlwy.net:27861/railway",
     dialect: 'postgres'
   }
 }
