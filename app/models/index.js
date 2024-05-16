@@ -1,6 +1,4 @@
 'use strict';
-
-require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -10,12 +8,10 @@ const config = require(__dirname + '/../../config/database.js')[env];
 const db = {};
 
 let sequelize;
-
-if (config) {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  console.error(`Database configuration for environment "${env}" is not defined.`);
-  process.exit(1);
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
