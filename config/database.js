@@ -6,7 +6,6 @@ const {
   DB_PORT="27861"
 } = process.env;
 
-
 module.exports = {
   test: {
     username: DB_USER,
