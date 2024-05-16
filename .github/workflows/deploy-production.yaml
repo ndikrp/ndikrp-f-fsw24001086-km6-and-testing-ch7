@@ -32,7 +32,7 @@ jobs:
       - name: Run Seeder
         run: |
           export DATABASE_URL="${{ secrets.DATABASE_URL }}"
-          npx sequelize db:seed:all deploy
+          npx sequelize db:seed:all
 
       - name: Deploy to Railway
         run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}

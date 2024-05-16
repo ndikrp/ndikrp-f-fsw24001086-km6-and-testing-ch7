@@ -1,13 +1,34 @@
 const {
-  DATABASE_URL = "postgresql://postgres:bieiFOuPaXQKdWEYtLyOPpgVzOhvFneT@monorail.proxy.rlwy.net:27861/railway"
+  DB_USER = "postgres",
+  DB_PASSWORD = "admin",
+  DB_NAME = "ch7_dev",
+  DB_HOST = "127.0.0.1",
+  DB_PORT = "5432",
 } = process.env;
 
 module.exports = {
+  development: {
+    username: DB_USER,
+    password: DB_PASSWORD,
+    database: `${DB_NAME}_development`,
+    host: DB_HOST,
+    port: DB_PORT,
+    dialect: "postgres"
+  },
   test: {
-    database: DATABASE_URL,
-    dialect: 'postgres',
-    dialectOptions: {
-      "ssl": true
-    }
+    username: DB_USER,
+    password: DB_PASSWORD,
+    database: `${DB_NAME}_test`,
+    host: DB_HOST,
+    port: DB_PORT,
+    dialect: "postgres"
+  },
+  production: {
+    username: DB_USER,
+    password: DB_PASSWORD,
+    database: `${DB_NAME}_production`,
+    host: DB_HOST,
+    port: DB_PORT,
+    dialect: "postgres"
   }
 }
