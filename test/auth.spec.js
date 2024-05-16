@@ -2,7 +2,7 @@ const request = require('supertest');
 const { sequelize, User, Role } = require('../app/models');
 const app = require('../app');
 
-describe('AuthenticationController', () => {
+describe('Authentication Endpoints', () => {
     let accessToken;
 
     beforeAll(async () => {
@@ -14,43 +14,49 @@ describe('AuthenticationController', () => {
         });
     });
 
-    it('should register a new user', async () => {
-        const userData = {
-            name: 'Bisa',
-            email: 'email2@example.com',
-            password: 'admin',
-        };
+    describe('Test POST /v1/auth/register', () => {
+        it('should register a new user', async () => {
+            const userData = {
+                name: 'Bisa',
+                email: 'email2@example.com',
+                password: 'admin',
+            };
 
-        const response = await request(app)
-            .post('/v1/auth/register')
-            .send(userData);
+            const response = await request(app)
+                .post('/v1/auth/register')
+                .send(userData);
 
-        expect(response.status).toBe(201);
-        expect(response.body.accessToken).toBeDefined();
+            expect(response.status).toBe(201);
+            expect(response.body.accessToken).toBeDefined();
+        });
     });
 
-    it('should login an existing user', async () => {
-        const loginData = {
-            email: 'email2@example.com',
-            password: 'admin',
-        };
+    describe('Test POST /v1/auth/login', () => {
+        it('should login an existing user', async () => {
+            const loginData = {
+                email: 'email2@example.com',
+                password: 'admin',
+            };
 
-        const response = await request(app)
-            .post('/v1/auth/login')
-            .send(loginData);
+            const response = await request(app)
+                .post('/v1/auth/login')
+                .send(loginData);
 
-        expect(response.status).toBe(201);
-        expect(response.body.accessToken).toBeDefined();
-        accessToken = response.body.accessToken; 
+            expect(response.status).toBe(201);
+            expect(response.body.accessToken).toBeDefined();
+            accessToken = response.body.accessToken;
+        });
     });
 
-    it('should get user details', async () => {
-        const response = await request(app)
-            .get('/v1/auth/whoami')
-            .set('Authorization', `Bearer ${accessToken}`);
+    describe('Test GET /v1/auth/whoami', () => {
+        it('should get user details', async () => {
+            const response = await request(app)
+                .get('/v1/auth/whoami')
+                .set('Authorization', `Bearer ${accessToken}`);
 
-        expect(response.status).toBe(200);
-        expect(response.body.email).toBe('email2@example.com');
+            expect(response.status).toBe(200);
+            expect(response.body.email).toBe('email2@example.com');
+        });
     });
 
     afterAll(async () => {
