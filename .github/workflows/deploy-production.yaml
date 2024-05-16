@@ -3,7 +3,7 @@ name: Deploy to Railway Prod ENV
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
 jobs:
   deploy:
@@ -26,12 +26,12 @@ jobs:
 
       - name: Run Migrations
         run: |
-          export DATABASE_URL="${{ secrets.PROD_DATABASE_URL }}"
+          export DATABASE_URL="${{ secrets.DATABASE_URL }}"
           npx sequelize db:migrate deploy
 
       - name: Run Seeder
         run: |
-          export DATABASE_URL="${{ secrets.PROD_DATABASE_URL }}"
+          export DATABASE_URL="${{ secrets.DATABASE_URL }}"
           npx sequelize db:seed:all deploy
 
       - name: Deploy to Railway
