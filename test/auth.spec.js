@@ -7,11 +7,6 @@ describe('AuthenticationController', () => {
 
     beforeAll(async () => {
         await sequelize.sync();
-        await User.destroy({
-            where: {
-                email: 'email2@example.com',
-            },
-        });
 
         await Role.findOrCreate({
             where: { name: 'CUSTOMER' },

@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node -r dotenv/config bin/www",
     "develop": "nodemon -r dotenv/config bin/www",
-    "db:create": "sequelize db:create",
-    "db:drop": "sequelize db:drop",
-    "db:migrate": "sequelize db:migrate",
-    "db:seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
+    "db:create": "npx sequelize db:create --env test",
+    "db:drop": "npx sequelize db:drop --env test",
+    "db:migrate": "npx sequelize db:migrate --env test",
+    "db:seed": "npx sequelize db:seed:undo:all && sequelize db:seed:all --env test",
     "test": "jest",
-    "test:application": "jest test/application.spec.js",
+    "test:app": "jest test/application.spec.js",
     "test:auth": "jest test/auth.spec.js",
     "test:car": "jest test/car.spec.js"
   },
