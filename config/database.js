@@ -1,7 +1,7 @@
 const {
-  DB_USER = "postgres",
-  DB_PASSWORD = "admin",
-  DB_NAME = "ch7_dev",
+  DB_USER = "",
+  DB_PASSWORD = "",
+  DB_NAME = "",
   DB_HOST = "127.0.0.1",
   DB_PORT = "5432",
 } = process.env;
