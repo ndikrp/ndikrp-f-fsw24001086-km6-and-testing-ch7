@@ -11,7 +11,12 @@ const db = {};
 
 let sequelize;
 
-sequelize = new Sequelize(config.database, config.username, config.password, config);
+if (config) {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+} else {
+  console.error(`Database configuration for environment "${env}" is not defined.`);
+  process.exit(1);
+}
 
 fs
   .readdirSync(__dirname)
