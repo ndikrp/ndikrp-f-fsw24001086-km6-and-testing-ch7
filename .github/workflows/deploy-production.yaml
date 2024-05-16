@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node.js 18.x
+      - name: Install Nodejs 18.x
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -25,23 +25,13 @@ jobs:
         run: npm i -g @railway/cli
 
       - name: Run Migrations
-        env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
         run: |
+          export DATABASE_URL="${{ secrets.DATABASE_URL }}"
           npx sequelize db:migrate
 
       - name: Run Seeder
-        env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
         run: |
+          export DATABASE_URL="${{ secrets.DATABASE_URL }}"
           npx sequelize db:seed:all
 
       - name: Deploy to Railway
