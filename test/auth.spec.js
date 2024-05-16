@@ -6,7 +6,6 @@ describe('AuthenticationController', () => {
     let accessToken;
 
     beforeAll(async () => {
-        jest.setTimeout(30000);
         await sequelize.sync();
         await User.destroy({
             where: {
