@@ -27,7 +27,7 @@ jobs:
       - name: Run Migrations
         run: |
           export DATABASE_URL="${{ secrets.DATABASE_URL }}"
-          npx sequelize db:migrate deploy
+          npm run db:migrate
 
       - name: Run Seeder
         run: |
