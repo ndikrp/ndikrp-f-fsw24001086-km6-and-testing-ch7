@@ -24,4 +24,4 @@ Challenge template by Fikri Nur Hidayat
 # Framework
 This project uses express.js as the server side and postgresql as the database
 
-Good luck!
+
