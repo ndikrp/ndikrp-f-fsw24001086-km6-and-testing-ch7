@@ -1,6 +1,6 @@
 # Binar: Challenge 07 Testing and Deployment 
 Fullstack Web Development Challenge 7 Binar Academy - FSW2402KM6004 Andhika Rizky Aulia
-Challenge template by Fikri Nur Hidayat
+Challenge template by Fikri Nur Hidayat to fulfill Binar Challenge 7
 
 # How to Use
 1. `git clone https://github.com/ndikrp/ndikrp-f-fsw24001086-km6-and-testing-ch7.git`
